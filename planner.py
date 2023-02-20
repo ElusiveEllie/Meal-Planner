@@ -1,5 +1,19 @@
-min_cal_budget = 1200
-max_cal_budget = 1500
+min_cal_budget = ""
+while type(min_cal_budget) != int:
+  try:
+    min_cal_budget = int(input("Set minimum daily calorie budget: "))
+  except:
+    print("Please input an integer.")
+
+max_cal_budget = ""
+while type(max_cal_budget) != int:
+  try:
+    max_cal_budget = int(input("Set maximum daily calorie budget: "))
+    if max_cal_budget < min_cal_budget:
+      max_cal_budget = ""
+      print("Please enter a number greater than or equal to the minimum calorie budget.")
+  except:
+    print("Please input an integer.")
 
 food_dictionary = {
     "overnight_oats": 440,
@@ -56,4 +70,7 @@ def find_meal_plans(food_dictionary):
 
   return meal_plans
 
-daily_meal_planning(food_dictionary)
+run = "Y"
+while run == "Y":
+  daily_meal_planning(food_dictionary)
+  run = input("Press enter to close.")
